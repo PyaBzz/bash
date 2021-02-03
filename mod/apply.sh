@@ -1,4 +1,4 @@
-source ../bashExtension/imports.sh
+source ../extension/imports.sh
 
 appendToBashrc() {
     cat <<EOT >>$bashrcFile
