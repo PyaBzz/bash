@@ -1,9 +1,5 @@
-shopt -s expand_aliases
-# This gets the absolute directory where the script is running
-# Don't make it a func as it would always get directory of the func source
-alias getMyDir='echo "$(readlink -f "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")"'
-
-source $(getMyDir)/source.sh
+myDir="$(readlink -f "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")"
+source $myDir/source.sh
 
 testPassed="${colourGreen}Passed${colourNc}"
 testFailed="${colourRed}Failed${colourNc}"
