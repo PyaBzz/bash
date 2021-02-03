@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=dropbox
-GenericName=dropbox
-Comment=Sync your files
-Exec=bash -c "exec ~/.dropbox-dist/dropboxd"
-Terminal=false
-Type=Application
