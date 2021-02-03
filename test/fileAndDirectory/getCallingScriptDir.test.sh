@@ -1,4 +1,4 @@
-source ../../importsForTesting.sh
+source ../../sourceForTesting.sh
 
 scriptDir=$(pwd)
 result=$(getCallingScriptDir) #In this case it is the same as running script directory

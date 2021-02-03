@@ -1,7 +1,6 @@
 #
-
-bashrcFile=~/.bashrc
-bashModDir=~/.bashMod
+bashrcFile=$HOME/.bashrc
+bashModDir=$HOME/.bashMod
 aliasesDir=$bashModDir/aliases
 
 isBashModded() {

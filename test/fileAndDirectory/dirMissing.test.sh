@@ -1,19 +1,19 @@
-source ../../importsForTesting.sh
+source ../../sourceForTesting.sh
 
 thisDir=$(pwd)
 
-if (dirExists $thisDir); then
-    result=${testPassed}
-else
+if (dirMissing $thisDir); then
     result=${testFailed}
+else
+    result=${testPassed}
 fi
 echo -e "${result} finding $thisDir"
 
 noSuchDir="noSuchDir"
 
-if (dirExists $noSuchDir); then
-    result=${testFailed}
-else
+if (dirMissing $noSuchDir); then
     result=${testPassed}
+else
+    result=${testFailed}
 fi
 echo -e "${result} not finding $noSuchDir"

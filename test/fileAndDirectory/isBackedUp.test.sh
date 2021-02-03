@@ -1,4 +1,4 @@
-source ../../importsForTesting.sh
+source ../../sourceForTesting.sh
 
 # Arrange
 scratchDir=./scratchDir

@@ -3,7 +3,7 @@ shopt -s expand_aliases
 # Don't make it a func as it would always get directory of the func source
 alias getMyDir='echo "$(readlink -f "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")"'
 
-source $(getMyDir)/imports.sh
+source $(getMyDir)/source.sh
 
 testPassed="${colourGreen}Passed${colourNc}"
 testFailed="${colourRed}Failed${colourNc}"

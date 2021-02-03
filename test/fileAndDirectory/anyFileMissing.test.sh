@@ -1,4 +1,4 @@
-source ../../importsForTesting.sh
+source ../../sourceForTesting.sh
 
 scriptName=$0
 
