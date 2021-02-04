@@ -22,13 +22,13 @@ applyBashMod() {
         backUp $bashrcFile
         appendToBashrc
 
-        if (dirMissing $aliasesDir); then
-            mkdir -p $aliasesDir
+        if (dirMissing $aliasDir); then
+            mkdir -p $aliasDir
         fi
     fi
 
     copyFile $appendageSource to $appendageFile
-    copyFile $aliasSource to $aliasesDir/mod.sh
+    copyFile $aliasSource to $aliasDir/mod.sh
     echo "Applied!"
 }
 

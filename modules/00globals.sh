@@ -1,7 +1,7 @@
 #
 bashrcFile=$HOME/.bashrc
 bashModDir=$HOME/.bashMod
-aliasesDir=$bashModDir/aliases
+aliasDir=$bashModDir/aliases
 
 isBashModded() {
     isBackedUp $bashrcFile
