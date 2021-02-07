@@ -52,4 +52,8 @@ setPromptStyle
 
 #════════════════════════════  Aliases  ════════════════════════════
 
-for f in ~/.bashMod/aliases/*.sh; do source $f; done
+for f in $HOME/.bashMod/aliases/*.sh; do source $f; done
+
+#════════════════════════════  Navigate  ════════════════════════════
+
+cd $HOME/projects
