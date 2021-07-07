@@ -10,12 +10,19 @@ EOT
 }
 
 applyBashMod() {
+    if (askUserClear "Mod bashrc?"); then
+        :
+    else
+        echo "Skipped"
+        return
+    fi
+
     if (isBashModded); then
         # You've already been modded. Just update
         if (askUser "Overwrite the existing mod?"); then
             echo "Overwriting mod ..."
         else
-            echo "Aborted"
+            echo "Skipped"
             return
         fi
     else
@@ -28,8 +35,21 @@ applyBashMod() {
     fi
 
     copyFile $appendageSource to $appendageFile
-    copyFile $aliasSource to $aliasDir/mod.sh
-    echo "Applied!"
+    echo "Applied"
+}
+
+applyAliases() {
+    package="aliases"
+    if (askUser "Apply $package?"); then
+        if (isBashModded); then
+            copyFile $aliasSource to $aliasDir/mod.sh
+            echo "$package applied"
+        else
+            echo "Skipped $package as bashMod hasn't been applied yet"
+        fi
+    else
+        echo "Skipped $package"
+    fi
 }
 
 appendageSource=./appendage.sh
@@ -43,9 +63,6 @@ if [[ $1 == "restore" ]]; then
         echo "Aborted"
     fi
 else
-    if (askUserClear "Mod bashrc?"); then
-        applyBashMod
-    else
-        echo "Aborted"
-    fi
+    applyBashMod
+    applyAliases
 fi
