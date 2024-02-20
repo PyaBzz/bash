@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Comment=Enable Persian keyboard layout
-GenericName=persian-keys
-Name=persian-keys
-Terminal=false
-Type=Application
-Exec=bash -c "setxkbmap -model pc105 -layout gb,ir -option grp:switch,grp:alt_shift_toggle"
-StartupNotify=false

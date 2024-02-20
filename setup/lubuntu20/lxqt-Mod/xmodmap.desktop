@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Comment=Fix multimedia buttons
-GenericName=xmodmap-mod
-Name=xmodmap-mod
-Terminal=false
-Type=Application
-Exec=bash -c "xmodmap -e 'keycode 172 = ' && xmodmap -e 'keycode 215 = '"
-StartupNotify=false
