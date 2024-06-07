@@ -1,7 +1,7 @@
-source ../source.sh
+source ./extensionDefs.sh
 
 bashRcFile=$HOME/.bashrc
-appendageFile=$(getMyDir)/appendage.sh
+appendageFile=$(getMyDir)/bashRc/appendage.sh
 
 appendToBashrc() {
     cat <<EOT >>$bashRcFile

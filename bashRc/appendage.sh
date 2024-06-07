@@ -1,6 +1,8 @@
-bashModDir="$(readlink -f "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")"
+myDir="$(readlink -f "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")"
 
-source $bashModDir/appendageDefs.sh
+# echo "appendage running in $myDir"
+bashModDir=$myDir/..
+source $myDir/defs.sh
 
 #════════════════════════════  Apply  ════════════════════════════
 
@@ -10,7 +12,10 @@ export isAppendageRun=true
 
 #════════════════════════════  Aliases  ════════════════════════════
 
-for f in $bashModDir/alias/applied/*.sh; do source $f; done
+for f in $bashModDir/alias/applied/*.sh; do
+    # echo "Sourcing aliases from $f"
+    source $f
+done
 
 #════════════════════════════  Navigate  ════════════════════════════
 

@@ -9,7 +9,7 @@ alias gistash='git stash'
 alias granch='git branch'
 alias gommit='git commit'
 alias gamend='gommit --amend --no-edit'
-alias glog='git log'
+alias glog='git log --pretty=oneline'
 alias glean='git clean'
 
 alias gitFilenamesPipe='git diff HEAD --name-only | xargs '
