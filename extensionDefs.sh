@@ -55,5 +55,5 @@ sourceFromDir() {
 
 # ==========================  Extension  ==========================
 
-# extensionDir=$(getMyDir)/extension
-# sourceFromDir $extensionDir .src.sh
+extensionDir=$(getMyDir)/extension
+sourceFromDir $extensionDir .src.sh
