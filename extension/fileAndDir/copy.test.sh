@@ -1,4 +1,4 @@
-source ../source4test.sh
+source ../index4test.sh
 
 # Definitions
 source0="$scratchDir/source0"

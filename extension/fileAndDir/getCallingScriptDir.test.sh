@@ -1,4 +1,4 @@
-source ../source4test.sh
+source ../index4test.sh
 
 scriptDir=$(pwd)
 result=$(getCallingScriptDir) #In this case it is the same as running script directory

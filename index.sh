@@ -1,4 +1,24 @@
-source ./extensionDefs.sh
+shopt -s expand_aliases
+# This gets the absolute directory where the script is running (vs getCallingScriptDir)
+# Don't make it a func as it would always get directory of the func source
+alias getMyDir='echo "$(readlink -f "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")"'
+
+# ==========================  Globals  ==========================
+
+hostName=$(cat /etc/hostname)
+
+bashModDir="$(getMyDir)" # Cannot use ./ for symlinks
+aliasDir=$bashModDir/alias
+aliasSrcDir=$bashModDir/alias/source
+aliasAppliedDir=$bashModDir/alias/applied
+
+desktopDir=$HOME/Desktop
+downloadsDir=$HOME/Downloads
+configDir=$HOME/.config
+autostartDir=$configDir/autostart
+
+extensionDir=$(getMyDir)/extension
+source $extensionDir/index.sh
 
 bashRcFile=$HOME/.bashrc
 appendageFile=$(getMyDir)/bashRc/appendage.sh

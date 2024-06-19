@@ -3,19 +3,7 @@ shopt -s expand_aliases
 # Don't make it a func as it would always get directory of the func source
 alias getMyDir='echo "$(readlink -f "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")"'
 
-# ==========================  Globals  ==========================
-
-hostName=$(cat /etc/hostname)
-
-bashModDir="$(getMyDir)/" # Cannot use ./ for symlinks
-aliasDir=$bashModDir/alias
-aliasSrcDir=$bashModDir/alias/source
-aliasAppliedDir=$bashModDir/alias/applied
-
-desktopDir=$HOME/Desktop
-downloadsDir=$HOME/Downloads
-configDir=$HOME/.config
-autostartDir=$configDir/autostart
+# ==========================  Extension  ==========================
 
 isBashModded() {
     if [ -z ${isAppendageRun+x} ]; then false; else true; fi
@@ -53,7 +41,5 @@ sourceFromDir() {
     for f in $(find $1 -name "*$extension"); do source $f; done
 }
 
-# ==========================  Extension  ==========================
-
-extensionDir=$(getMyDir)/extension
-sourceFromDir $extensionDir .src.sh
+myDir=$(getMyDir)
+sourceFromDir $myDir .src.sh

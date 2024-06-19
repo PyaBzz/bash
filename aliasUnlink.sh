@@ -1,4 +1,4 @@
 #!
-source ./modDefs.sh
+source ./index.sh
 
 unlinkAlias $1
