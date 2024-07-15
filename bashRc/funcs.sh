@@ -37,3 +37,9 @@ mkcd ()
     mkdir -p -- "$1" &&
     cd -P -- "$1"
 }
+
+readCsvFile() {
+    local filepath=$1
+    local csv=$(<$filepath)
+    IFS=',' read -ra values <<< "$csv"
+}

@@ -9,8 +9,8 @@ hostName=$(cat /etc/hostname)
 
 bashModDir="$(getMyDir)" # Cannot use ./ for symlinks
 aliasDir=$bashModDir/alias
-aliasSrcDir=$bashModDir/alias/source
-aliasAppliedDir=$bashModDir/alias/applied
+aliasSrcDir=$aliasDir/source
+aliasAppliedCsv=$aliasDir/applied.sh
 
 desktopDir=$HOME/Desktop
 downloadsDir=$HOME/Downloads
@@ -45,35 +45,39 @@ applyBashMod() {
 
 linkAlias() {
     local pkg=$1
-    local aliasLnk=$aliasAppliedDir/$pkg.sh
-
-    askToProceed "Install aliases for $pkg?"
+    local aliasSrc=$aliasSrcDir/$pkg.sh
 
     if (isBashNotModded); then
         echo "Skipped aliases. Prerequisite: bashMod"
-        return
+        return 1
     fi
 
-    cd $aliasAppliedDir
-    ln -sf ../source/$pkg.sh
-    cd -
-
-    if (fileExists $aliasLnk); then
-        echo "Done!"
-    else
-        echo "Failed!"
+    if (fileMissing $aliasSrc); then
+        echo "Alias source not found at $aliasSrc"
+        return 1
     fi
+
+    askToProceed "Install aliases for $pkg?"
+
+    echo -n ",$pkg" >> $aliasAppliedCsv # -n prevents newLine
 }
 
 unlinkAlias() {
     local pkg=$1
-    local aliasLnk=$aliasAppliedDir/$pkg.sh
-    askToProceed "Uninstall aliases for $pkg?"
-    unlink $aliasLnk
+    local aliasSrc=$aliasSrcDir/$pkg.sh
 
-    if (fileMissing $aliasLnk); then
-        echo "Done!"
-    else
-        echo "Failed!"
+    if (isBashNotModded); then
+        echo "Skipped aliases. Prerequisite: bashMod"
+        return 1
     fi
+
+    if (fileMissing $aliasSrc); then
+        echo "Alias source not found at $aliasSrc"
+        return 1
+    fi
+
+    askToProceed "Uninstall aliases for $pkg?"
+
+    wordToDelete=",$pkg"
+    sed -i "s/$wordToDelete//g" $aliasAppliedCsv
 }
